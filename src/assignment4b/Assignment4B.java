@@ -18,8 +18,11 @@ public class Assignment4B
         //JOptionPane.showMessageDialog(null, message);
         //JOptionPane.showMessageDialog(null,"Welcome to the HR payroll program");
         
-        double ANN_BONUS = .05;
-        double YR_SALARY = 50000;
+        //double ANN_BONUS = .05;
+        double annBonus;
+        //double YR_SALARY = 50000;
+        double yrSal;
+        
         double HR_RATE = 20;
         double BASE_PAY = 200;
         double COMMISSION = .10;
@@ -44,14 +47,46 @@ public class Assignment4B
             
             while (answer < 1 || answer > 4)
             {
-                System.out.println("Invalid input. Please provide a number between "
-                        + "1 and 4.");            
-                answer = input.nextInt();
+                answer = Integer.parseInt(JOptionPane.showInputDialog("Please "
+                        + "provide a number between 1 and 4."));
+                //System.out.println("Invalid input. Please provide a number between "
+                //        + "1 and 4.");            
+                //answer = input.nextInt();
             }
             
             switch (answer)
             {
-                
+                case 1:
+                    fName = JOptionPane.showInputDialog("Please enter the employee's "
+                            + "first name:");
+                    lName = JOptionPane.showInputDialog("Please enter the employee's "
+                            + "last name:");
+                    yrSal = Double.parseDouble(JOptionPane.showInputDialog("Please "
+                            + "provide the employee's yearly salary: $"));
+                        while (yrSal < 30000 || yrSal > 65000)
+                        {
+                            yrSal = Double.parseDouble(JOptionPane.showInputDialog
+                                ("Invalid input: The amount must be between $30000 "
+                                        + "and $65000."));
+                        }
+                        /*if (yrSal >= 30000 && yrSal <= 65000)
+                        {
+                                
+                        }
+                        else
+                        {
+                            JOptionPane.showMessageDialog(null, "Invalid "
+                                    + "input: The amount must be between $30000 "
+                                    + "and $65000");
+                            continue;
+                        }*/
+                    annBonus = Double.parseDouble(JOptionPane.showInputDialog("Please "
+                            + "provide the annual profit bonus percent: %"));
+                    
+                    //String message = String.format("Welcome to the payroll calculator %s %s.  Your salary is %d and your bonus is %.2f", fName, lName, yearlySal, yearlyBonus);
+                    String message = String.format("This summary is for employee: %s %s. The employee's yearly salary is $%s not including the annual profit bonus of %.2f percent.", fName, lName, yrSal, annBonus);
+                    JOptionPane.showMessageDialog(null, message);
+                    break;       
             }
             /*while (answer == 1)
             {
@@ -72,7 +107,7 @@ public class Assignment4B
                 break;
             }*/
                 
-            while (answer == 2)
+            /*while (answer == 2)
             {
                 System.out.print("Please enter the employee's first name: ");
                 fName = input.next(); 
@@ -107,9 +142,9 @@ public class Assignment4B
                         + "employee's total paycheck amount is $", 
                         totalPay);
                 break;
-            }
+            }*/
             
-            while (answer == 3)
+            /*while (answer == 3)
             {
                 System.out.print("Please enter the employee's first name: ");
                 fName = input.next(); 
@@ -130,7 +165,7 @@ public class Assignment4B
                         + "amount is $", comm, " and its total "
                         + "paycheck amount is $", wPaycheck);
                 break;
-            }
+            }*/
         } while (answer != 4);
     }
 }
