@@ -18,7 +18,7 @@ public class Assignment4B
         int answer, hrs, otHours, soldItems; 
         String fName, lName;
         
-        JOptionPane.showMessageDialog(null,"Welcome to the HR payroll program");
+        JOptionPane.showMessageDialog(null,"Welcome to the HR payroll program.");
              
         do 
         {
@@ -29,8 +29,8 @@ public class Assignment4B
             
             while (answer < 1 || answer > 4)
             {
-                answer = Integer.parseInt(JOptionPane.showInputDialog("Please "
-                        + "provide a number between 1 and 4."));
+                answer = Integer.parseInt(JOptionPane.showInputDialog("Invalid "
+                        + "input: Please provide a number between 1 and 4."));
             }
             
             switch (answer)
@@ -49,14 +49,7 @@ public class Assignment4B
                                 ("Invalid input: The amount must be between $30,000 "
                                         + "and $65,000."));
                         }
-                        /*if 
-                        {
-                            how can I do the step above using an if-else statement
-                        }
-                        else
-                        {
-                            
-                        }*/
+                       
                     annBonus = Double.parseDouble(JOptionPane.showInputDialog("Please "
                             + "provide the annual profit bonus percent:"));
                     
@@ -95,29 +88,38 @@ public class Assignment4B
                                 + "than 0."));
                         }
                         
-                        //what if worked < 40 hrs                        
-                        
                         if (hrs > 40)
-                        {
+                        { 
                             otHours = Integer.parseInt(JOptionPane.showInputDialog
                                 ("Please provide the number of overtime hours worked:"));
 
                             otPay = ((hrRate * 1.5) * otHours);
+
+                            regularPay = hrRate * 40;
+                            wPaycheck = regularPay + otPay;
+
+                            String message2 = String.format("This summary is for "
+                                + "employee: %s %s. The employee's regular pay "
+                                + "amount is $%.2f and its overtime pay amount is "
+                                + "$%.2f. Overall, the employee's weekly paycheck "
+                                + "amount equals to $%.2f.", fName, lName, regularPay, 
+                                otPay, wPaycheck);
+                            JOptionPane.showMessageDialog(null, message2);
                         }
                         else
                         {
                             otPay = 0;
+                            
+                            regularPay = hrRate * hrs;
+                            wPaycheck = regularPay + otPay;
+
+                            String message2 = String.format("This summary is for "
+                                + "employee: %s %s. Since the employee did not "
+                                + "work any overtime, its overtime pay equals $%.2f "
+                                + "and its weekly paycheck/regular pay amount is "
+                                + "$%.2f.", fName, lName, otPay, wPaycheck);
+                            JOptionPane.showMessageDialog(null, message2);
                         }
-                    
-                    regularPay = hrRate * 40;
-                    wPaycheck = regularPay + otPay;
-                    
-                    String message2 = String.format("This summary is for employee: "
-                            + "%s %s. The employee's regular pay amount is $%.2f "
-                            + "and its overtime pay amount is $%.2f. Overall, "
-                            + "the employee's weekly paycheck amount equals to "
-                            + "$%.2f.", fName, lName, regularPay, otPay, wPaycheck);
-                    JOptionPane.showMessageDialog(null, message2);
                     break;
                     
                 case 3:
@@ -146,7 +148,7 @@ public class Assignment4B
                     String message3 = String.format("This summary is for employee: "
                             + "%s %s. The total amount for the items sold is $%.2f. "
                             + "The employee's commission amount is $%.2f and its "
-                            + "total paycheck amount equals to $%.2f.", fName, lName, 
+                            + "total paycheck amount equals $%.2f.", fName, lName, 
                             totalAmount, totalComm, wPaycheck);
                     JOptionPane.showMessageDialog(null, message3);
                     break;
